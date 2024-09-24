@@ -987,7 +987,8 @@ pre .javascript .function {
   background: transparent;
 }
 .header-inner {
-  margin: 0 auto;
+  margin-top: 60px;
+  padding-top: 45px;
   width: calc(100% - 20px);
 }
 @media (min-width: 1200px) {
@@ -1163,7 +1164,7 @@ pre .javascript .function {
 }
 .sidebar-inner {
   color: #999;
-  padding: 36px 10px;
+  padding: 72px 10px;
   text-align: center;
 }
 .cc-license {
@@ -1220,7 +1221,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #8cffff;
+  background: #3718fb;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1536,7 +1537,7 @@ pre .javascript .function {
 }
 .back-to-top {
   background: transparent;
-  margin: -16px -10px -20px;
+  margin: -52px -10px -20px;
   opacity: 0;
 }
 .back-to-top.back-to-top-on {
@@ -1577,10 +1578,16 @@ pre .javascript .function {
   margin-top: 40px;
   text-align: center;
 }
-.use-motion .post-block,
+.use-motion .post-block {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  margin-left: 2px;
+  padding-top: 45px;
+  opacity: 0.95;
+}
 .use-motion .pagination,
 .use-motion .comments {
-  opacity: 0;
+  visibility: hidden;
 }
 .use-motion .post-header {
   opacity: 0;
@@ -2304,11 +2311,11 @@ ul.breadcrumb li + li:last-child {
   padding: 0;
   position: absolute;
   top: 0;
-  width: 300px;
+  width: 400px;
 }
 @media (min-width: 1200px) {
   .header-inner {
-    width: 300px;
+    width: 400px;
   }
 }
 @media (max-width: 991px) {
@@ -2335,7 +2342,7 @@ ul.breadcrumb li + li:last-child {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
   box-sizing: border-box;
   padding: 40px;
-  width: calc(100% - 336px);
+  width: calc(100% - 472px);
 }
 @media (max-width: 991px) {
   .content-wrap {
@@ -2477,7 +2484,7 @@ ul.breadcrumb li + li:last-child {
   box-shadow: none;
   margin-top: 100%;
   position: static;
-  width: 300px;
+  width: 400px;
 }
 @media (max-width: 991px) {
   .sidebar {
@@ -2493,12 +2500,12 @@ ul.breadcrumb li + li:last-child {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
   box-sizing: border-box;
   color: var(--text-color);
-  width: 300px;
+  width: 400px;
   opacity: 0;
 }
 .sidebar-inner.affix {
   position: fixed;
-  top: 36px;
+  top: 72px;
 }
 .sidebar-inner.affix-bottom {
   position: absolute;
@@ -2576,7 +2583,7 @@ ul.breadcrumb li + li:last-child {
 }
 .back-to-top {
   background: var(--body-bg-color);
-  margin: -28px -10px -18px;
+  margin: -64px -10px -18px;
 }
 .back-to-top.back-to-top-on {
   margin-top: 16px;
@@ -2595,13 +2602,13 @@ ul.breadcrumb li + li:last-child {
 .post-block + .post-block {
   border-radius: 20px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
-  margin-top: 36px;
+  margin-top: 72px;
 }
 .comments {
   background: var(--content-bg-color);
   border-radius: 20px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
-  margin-top: 36px;
+  margin-top: 72px;
   padding: 40px;
 }
 .tabs-comment {
@@ -2618,7 +2625,7 @@ ul.breadcrumb li + li:last-child {
   border-radius: 20px;
   border-top: initial;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
-  margin: 36px 0 0;
+  margin: 72px 0 0;
   padding: 10px 0 10px;
 }
 .pagination .prev,
@@ -2639,7 +2646,7 @@ ul.breadcrumb li + li:last-child {
 }
 .sub-menu + .content .post-block {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
-  margin-top: 36px;
+  margin-top: 72px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .sub-menu + .content .post-block {
@@ -2686,20 +2693,20 @@ ul.breadcrumb li + li:last-child {
     padding: 8px;
   }
   .posts-expand .post-button {
-    margin: 36px 0;
+    margin: 72px 0;
   }
   .post-block {
     border-radius: 20px;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
     min-height: auto;
-    padding: 36px;
+    padding: 72px;
   }
   .post-block + .post-block {
     margin-top: 8px;
   }
   .comments {
     margin-top: 8px;
-    padding: 10px 36px;
+    padding: 10px 72px;
   }
   .pagination {
     margin: 8px 0 0;
