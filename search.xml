@@ -70,4 +70,82 @@
         <tag>环境搭建</tag>
       </tags>
   </entry>
+  <entry>
+    <title>个人blog搭建及美化.md</title>
+    <url>/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>本文主要介绍如何在linux环境下利用github方式搭建自己的个人博客，主要参考了</p>
+<p><a href="https://pdpeng.github.io/2022/01/19/setup-personal-blog/">https://pdpeng.github.io/2022/01/19/setup-personal-blog/</a></p>
+<p><a href="https://blog.csdn.net/Bennnnnnn/article/details/128000842?spm=1001.2101.3001.6650.6&utm_medium=distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-128000842-blog-77946677.237%5Ev3%5Ewap_relevant_t0_download&depth_1-utm_source=distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-128000842-blog-77946677.237%5Ev3%5Ewap_relevant_t0_download">Bennnnnnn大佬的blog</a></p>
+<span id="more"></span>
+
+<h2 id="个人blog的搭建"><a href="#个人blog的搭建" class="headerlink" title="个人blog的搭建"></a>个人blog的搭建</h2><p>建议按照本地—&gt;github—&gt;服务器的顺序来，从简单到难，比较容易坚持下去</p>
+<ul>
+<li><p>首先，安装一些必要的开发工具，<code>git</code>、 <code>node.js</code>、<code>npm</code>、以及一个喜欢的IDE（这里我用的是vim)，在linux环境下均可使用<code>sudo apt-get install </code>命令下载。</p>
+</li>
+<li><p>下载一个博客框架，这里我用的是hexo</p>
+<p><code>npm install hexo-cli -g</code></p>
+</li>
+<li><p>新建一个文件夹，并切换至该文件夹路径，执行</p>
+<p><code>hexo init</code>指令</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/init_1.png" class="" title="label">
+
+<p>执行成功后使用<code>ls</code>查看当前目录内容</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/init_success.png" class="" title="label">
+</li>
+<li><p>简单认识下hexo的几个比较常用到的文件:</p>
+<ul>
+<li>public:最终所见网页的所有内容</li>
+<li>_config.yml:站点配置文件，设定一些公开信息等</li>
+<li>themes:存放主题文件，hexo根据主题生成静态网页</li>
+<li>source:用于存放用户资源（_post文件夹下会存放用户的markdown文件）</li>
+</ul>
+</li>
+<li><p>执行<code>hexo s</code>命令</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/s1.png" class="" title="s1">
+
+<p>打开显示的网址</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/s2.png" class="" title="s2">
+</li>
+<li><p>到这里，其实已经完成了一个简易的blog搭建，下面其实就是要将blog部署到github上生成网页</p>
+</li>
+<li><p>首先新建一个仓库</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/github_create1.png" class="" title="github_create1">
+
+<p><font color = 'red'>注意</font>:这里的仓库名一定要写用户名.github.io,且一定是公开的</p>
+</li>
+<li><p>配置_config.yml文件</p>
+<p>修改文件中deploy部分内容如下</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">仓库连接</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p><font color = 'red'>注意</font>:这里的仓库连接最好使用ssh,git的ssh连接可以参考其他博文</p>
+</li>
+<li><p>执行<code>hexo d</code>指令</p>
+<p>此时，返回github仓库可以看到</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/github2.png" class="" title="github2">
+</li>
+<li><p>对仓库进行设置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/github3.png" class="" title="github3">
+
+<p>更改branch的部分即可，如果没有出现最上面的<em><strong>Your site is at</strong></em>可以多刷新几次页面。</p>
+<p><font color = 'red'>注意</font>:因为一个github只能申请一个个人页面，所以这里给出的网址是不正确的。</p>
+</li>
+<li><p>这是搜索该网页，将出现我们之前看到的页面</p>
+</li>
+<li><p>到这里，将个人blog部署到github就完成了，但是我们还需要对自己的hexo的代码进行管理，所以在文件夹下执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin 管理代码的仓库名称</span><br></pre></td></tr></table></figure>
+
+<p><font color = 'red'>注意</font>:与之前在_config.yml文件中配置的repo是两个不同的仓库</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%88%90.png" class="" title="搭建完成">
+
+<p>如上图所示，一共两个不同的仓库。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
 </search>
