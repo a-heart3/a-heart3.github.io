@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2024/09/24/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>ubuntu系统的美化.md</title>
     <url>/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<p>刚刚下好的ubuntu界面可能不是那么美观，我们可以做一些改动使它好看一些。</p>
@@ -77,6 +58,8 @@
 <p><a href="https://pdpeng.github.io/2022/01/19/setup-personal-blog/">https://pdpeng.github.io/2022/01/19/setup-personal-blog/</a></p>
 <p><a href="https://blog.csdn.net/Bennnnnnn/article/details/128000842?spm=1001.2101.3001.6650.6&utm_medium=distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-128000842-blog-77946677.237%5Ev3%5Ewap_relevant_t0_download&depth_1-utm_source=distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-128000842-blog-77946677.237%5Ev3%5Ewap_relevant_t0_download">Bennnnnnn大佬的blog</a></p>
 <span id="more"></span>
+
+
 
 <h2 id="个人blog的搭建"><a href="#个人blog的搭建" class="headerlink" title="个人blog的搭建"></a>个人blog的搭建</h2><p>建议按照本地—&gt;github—&gt;服务器的顺序来，从简单到难，比较容易坚持下去</p>
 <ul>
@@ -139,6 +122,99 @@
 
 <p>如上图所示，一共两个不同的仓库。</p>
 </li>
+</ul>
+<h2 id="blog的美化"><a href="#blog的美化" class="headerlink" title="blog的美化"></a>blog的美化</h2><p>搭建完成后，页面不是特别好看，所以还可以再美化一下页面。</p>
+<ul>
+<li><p>首先在<a href="https://hexo.io/themes/%E4%B8%AD%E9%80%89%E6%8B%A9%E8%87%AA%E5%B7%B1%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%BB%E9%A2%98%E4%B8%8B%E8%BD%BD%EF%BC%8C%E6%88%91%E9%80%89%E6%8B%A9%E7%9A%84%E6%98%AFnext%E4%B8%BB%E9%A2%98%E3%80%82">https://hexo.io/themes/中选择自己喜欢的主题下载，我选择的是next主题。</a></p>
+</li>
+<li><p>然后在_config.yml文件中配置使用主题</p>
+<p><code>theme: next</code><font color = 'red'>注意</font>:要有空格</p>
+<p>配置完成后执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>查看效果</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next1.png" class="" title="next1">
+
+<p>貌似更难看了，没事，我们可以继续慢慢修改主题文件。</p>
+</li>
+<li><p>首先，在.&#x2F;themes&#x2F;next目录下的_config.yml文件配置<code>scheme: Gemini</code>，注释掉其他scheme选项，scheme是next提供的主题选项。</p>
+<p><font color = 'red'>注意</font>:之后会i频繁出现两个_config.yml文件，一个是主站点的config文件，一个是next主题的config文件，在下面需要修改时我会进行说明。</p>
+<p>更改后效果如图</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next2.png" class="" title="next2">
+</li>
+<li><p>然后我们可以设置目录信息</p>
+<p>打开主题下的_config.yml文件，找到menu，选择自己想要的目录内容，取消掉注释即可。生成页面如下</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next3.png" class="" title="next3">
+</li>
+<li><p>可以看到，关于个人的资料信息卡还没有设置，所以我们可以先设置一下自己的个人信息卡，在主站点的_config.yml文件进行配置site如下。</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next3%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.png" class="" title="next3个人信息">
+
+<p>结果如下</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next3%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF2.png" class="" title="next3个人信息2">
+</li>
+<li><p>注意到底部有个Powered by Hexo&amp;Next.Gemini</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E5%BA%95%E9%83%A8%E5%BC%BA%E5%8A%9B%E9%A9%B1%E5%8A%A8.png" class="" title="底部强力驱动">
+
+<p>有些影响美观，可以删除，在next下的_config.yml文件配置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/power%E5%8E%BB%E9%99%A4.png" class="" title="底部强力驱动">
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/powers.png" class="" title="powers">
+</li>
+<li><p>配置代码模块高亮显示以及显示风格，首先，在主站的_config.yml文件配置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE.png" class="" title="代码高亮">
+
+<p>然后在主题下的_config.yml文件文件配置代码模板样式和粘贴按钮样式</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E4%BB%A3%E7%A0%81%E6%A0%B7%E5%BC%8F.png" class="" title="代码样式">
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E4%BB%A3%E7%A0%81%E6%A0%B7%E5%BC%8F%E7%BB%93%E6%9E%9C.png" class="" title="代码样式结果">
+</li>
+<li><p>我们发现，没有搜索栏，这样自己和别人想看某篇博客时会比较难找</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure>
+
+<p>下载搜索插件</p>
+<p>然后在主站点_config.yml页面最下方加入如下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 1000</span><br></pre></td></tr></table></figure>
+
+<p>然后在主题的_config.yml页面找到并打开local_search的开关</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/search.png" class="" title="search">
+</li>
+<li><p>然后我们可以安装字数统计和阅读时长</p>
+<p><code>npm install hexo-word-counter</code></p>
+<p>在主站的config文件中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  wpm: 275</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/word.png" class="" title="word">
+</li>
+<li><p>然后我们可以设置以下个人信息的头像以及交友链接</p>
+<p>首先是头像，把自己想要的头像放在themes&#x2F;next&#x2F;source&#x2F;images文件夹下，然后在主题的_config.yml的文件中配置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/touxiang.png" class="" title="touxiang">
+
+<p>然后配置自己的social连接</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/social.png" class="" title="social">
+
+<p>结果</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/touxiangwancheng.png" class="" title="touxiang">
+</li>
+<li><p>然后我们把背景图片换一换</p>
+<p>首先把背景图片放在themes&#x2F;next&#x2F;source&#x2F;images中，然后在hexo&#x2F;source目录下新建data文件夹，在data中新建styles.stl文件（<font color = 'red'>注意:</font>在hexo下而不是next下新建）,在styles.stl添加如下代码</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/background.png" class="" title="background">
+
+<p>然后在next目录下的配置文件找到<code>custom_file_path</code>打开style选项，效果如下</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/background2333.png" class="" title="background2333">
+</li>
+<li><p>边框圆角设置</p>
+<p>hexo&#x2F;source&#x2F;_data&#x2F;variables.styl</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$border-radius-inner			= 20px 20px 20px 20px;</span><br><span class="line">$border-radius					= 20px;</span><br></pre></td></tr></table></figure>
+
+<p>打开custom_file_path中的variable注释</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/yuanjiao.png" class="" title="yuanjiao">
+</li>
+<li><p>设置透明度</p>
+<p>直接在_data&#x2F;styles.styl的body中加入</p>
+<p><code>opacity: 0.85</code>0.85为自己的透明度设置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E9%80%8F%E6%98%8E%E5%BA%A6.png" class="" title="透明度"></li>
 </ul>
 ]]></content>
       <categories>
