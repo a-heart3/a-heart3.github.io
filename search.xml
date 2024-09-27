@@ -214,7 +214,19 @@
 <li><p>设置透明度</p>
 <p>直接在_data&#x2F;styles.styl的body中加入</p>
 <p><code>opacity: 0.85</code>0.85为自己的透明度设置</p>
-<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E9%80%8F%E6%98%8E%E5%BA%A6.png" class="" title="透明度"></li>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E9%80%8F%E6%98%8E%E5%BA%A6.png" class="" title="透明度">
+</li>
+<li><p>因为打开页面后，内容和标签都在页面最顶端，我会感觉有点不舒服，所以想把内容和边框信息往下拉一些</p>
+<p>文章区域调整，在themes&#x2F;next&#x2F;source&#x2F;css&#x2F;_common&#x2F;components&#x2F;post&#x2F;post.styl做如下修改(如果没有post.styl,则在index.styl修改)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.use-motion &#123;</span><br><span class="line">	if (hexo-config(&#x27;motion.transition.post_block&#x27;)) &#123;</span><br><span class="line">		.post-bock&#123;</span><br><span class="line">			margin-top: 60px;</span><br><span class="line">			margin-bottom: 60px;</span><br><span class="line">			margin-left: 2px;</span><br><span class="line">			padding-top: 45px;</span><br><span class="line">			opacity: 0.95;</span><br><span class="line">		&#125;</span><br><span class="line">		.pagination, .comments &#123;</span><br><span class="line">			visibility: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>右侧菜单栏修改，在themes&#x2F;next&#x2F;source&#x2F;css&#x2F;_common&#x2F;outline&#x2F;header中修改header.styl(或者index.styl)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.header-inner &#123;</span><br><span class="line">	margin-top: 60px;</span><br><span class="line">	padding-top: 45px;</span><br><span class="line">	display: flex;</span><br><span class="line">	flex-shrink: 0;</span><br><span class="line">	padding: 0 10px;</span><br><span class="line">	border-radius: 18.8px 18.8px				//设置边框圆角</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C.png" class="" title="最终结果">
+</li>
+<li><p>至此，利用hexo搭建个人网站和美化已经完成，大家别忘了<code>hexo d</code>部署到自己的网站上去，如果没有成功，那么就把网页浏览历史清空再试几次</p>
+</li>
 </ul>
 ]]></content>
       <categories>
