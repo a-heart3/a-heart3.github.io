@@ -47,6 +47,90 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu 22.04环境下 vivado 安装配置</title>
+    <url>/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>这篇文章主要讲述的是如何在ubuntu22.04的环境下对vivado进行安装配置</p>
+<span id="more"></span>
+
+
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>建议使用<code>web staller</code>安装包（ubuntu下载大文件可能会失败)</p>
+</li>
+<li><p>下载后对安装包执行:<code>sudo chmod 777 ***.bin</code></p>
+</li>
+<li><p>执行<code>***.bin</code></p>
+</li>
+<li><p>开始安装</p>
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85.png" class="" title="开始安装">
+</li>
+<li><p>点击next，进入版本选择，选择standard版本</p>
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9.png" class="" title="版本选择">
+</li>
+<li><p>点击next，将配置调整为下图:</p>
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E9%85%8D%E7%BD%AE%E9%80%89%E6%8B%A9.png" class="" title="配置选择">
+
+<p>注意，这样安装的vivado只能使用Artix-7开发板，不过满足我的学习要求是ok的</p>
+</li>
+<li><p>点击next，出现的选项都点同意</p>
+</li>
+<li><p>选择一个路径安装</p>
+</li>
+<li><p>ubuntu安装之前需要下载一些库文件支持</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get upgrade</span><br><span class="line"><span class="built_in">sudo</span> apt-get install libncurses5</span><br><span class="line"><span class="built_in">sudo</span> apt-get install libinfo5</span><br><span class="line"><span class="built_in">sudo</span> apt-get install libncurses5-dev libncursesw5-dev</span><br><span class="line"><span class="built_in">sudo</span> apt-get install ncurses-compat-libs	<span class="comment">#最后这个可能安装不成功，不碍事</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于ubuntu用户，我们不得不每次进入vivado安装路径，用命令执行.&#x2F;vivado来运行，而且这样还会在主目录下生成乱七八糟的log和journal。下面来讲一下如果ubuntu没有自动生成菜单快捷方式我们应该怎么办。</p>
+<ul>
+<li><p>进入桌面</p>
+</li>
+<li><p>执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> vivado.desktop 			//创建一个快捷方式</span><br><span class="line"><span class="built_in">sudo</span> gedit ./vivado.desktop		//用gedit编辑这个文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Exec=/home/axx/tools/Xilinx/Vivado/2023.1/bin/vivado -nojou -nolog</span><br><span class="line">Name=Vivado2023.1</span><br><span class="line">GenericName=The IDE of choice <span class="keyword">for</span> verilog development.</span><br><span class="line">Icon=/home/axx/tools/Xilinx/Vivado/2023.1/doc/images/vivado_logo.ico</span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">Categories=Development;IDE;Vivado</span><br></pre></td></tr></table></figure>
+
+<p>exec, icon的；目录需要替换成自己的vivado安装目录</p>
+</li>
+<li><p>给图标权限</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li><p>下载vscode</p>
+</li>
+<li><p>在vivado tools-&gt;settings-&gt;Text Editor处改为vscode</p>
+</li>
+<li><p>语法高亮： 下载<code>Verilog-HDL/SystemVerilog/Bluespec SystemVerilog</code>插件</p>
+</li>
+<li><p>ctags的安装使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install universal-ctags</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/ctags.png" class="" title="ctags">
+
+<p>这里<code>ctags</code>的路径可以通过<code>whereis ctags</code>查看</p>
+<p><font color = 'red'>注意:</font>如果想要ctags生效，需要vscode打开文件夹，打开单个文件ctags不生效</p>
+</li>
+<li><p>语法检查:使用verilator</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install verilator</span><br><span class="line"><span class="built_in">sudo</span> apt-get install gtkwave</span><br></pre></td></tr></table></figure>
+
+<p>设置</p>
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/verilator.png" class="" title="verilator">
+
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/verilator2.png" class="" title="verilator2">
+
+<p>设置完成后重启vscode语法纠错</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+      </categories>
+      <tags>
+        <tag>环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu系统的美化.md</title>
     <url>/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<p>刚刚下好的ubuntu界面可能不是那么美观，我们可以做一些改动使它好看一些。</p>
