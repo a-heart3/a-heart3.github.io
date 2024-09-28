@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo的使用</title>
+    <url>/2024/09/28/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>hexo的简单使用方法</p>
+<span id="more"></span>
+
+<ul>
+<li><p>发表文章使用<code>hexo new title</code>命令，然后在hexo&#x2F;source&#x2F;_posts目录下更改</p>
+</li>
+<li><p>about页面，categories页面以及tags页面的创建:</p>
+<ol>
+<li><p>使用<code>hexo new page about</code>命令， 进入source&#x2F;about修改index.md即可</p>
+</li>
+<li><p>修改index.md的信息如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: about</span><br><span class="line">date:</span><br><span class="line">type: &quot;about&quot;				//一定要有空格</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在index.md写上about页面的介绍内容即可</p>
+</li>
+</ol>
+</li>
+<li><p>categories和tags的页面创建方法与about一致。但是，categories和tags在将要发表的博客中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title:</span><br><span class="line">data:</span><br><span class="line">tags:</span><br><span class="line">	- tags1</span><br><span class="line">	- tags2</span><br><span class="line">categories:</span><br><span class="line">	- categories1</span><br><span class="line">	- categories2</span><br></pre></td></tr></table></figure>
+
+<p>tags可以并列，但是categories不能并列创建,此处创建完成后，categories2会成为categories1的子目录。</p>
+</li>
+<li><p>最后是发布博客时，图片显示的问题</p>
+<ol>
+<li><p>首先，使用<code>hexo-image-link</code>命令下载插件，该插件可以将markdown的图片自动生成资源</p>
+</li>
+<li><p>然后设置hexo目录下的_config.yml文件的<code>post_asset_folder: true</code></p>
+</li>
+<li><p>此时，使用<code>hexo new title</code>命令创建新的博客时，会在同目录下生成一个同名文件夹，将需要用的图片放置到 该文件夹。</p>
+</li>
+<li><p>最后在文件中引用图片<code>![label](图片的相对路径)</code>(建议使用markdown编辑器)</p>
+</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>-工具的使用</category>
+      </categories>
+      <tags>
+        <tag>-工具的使用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu系统的美化.md</title>
     <url>/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/</url>
     <content><![CDATA[<p>刚刚下好的ubuntu界面可能不是那么美观，我们可以做一些改动使它好看一些。</p>
