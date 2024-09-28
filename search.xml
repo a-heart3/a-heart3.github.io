@@ -366,4 +366,32 @@
         <tag>环境搭建</tag>
       </tags>
   </entry>
+  <entry>
+    <title>配置快捷方式.md</title>
+    <url>/2024/09/28/%E9%85%8D%E7%BD%AE%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>这篇主要讲述怎么创建linux的快捷方式</p>
+<span id="more"></span>
+
+<ol>
+<li><p>查找源文件路径，找到bin目录（一定要选择带bin的目录)</p>
+</li>
+<li><p>找到一个合适的icon</p>
+</li>
+<li><p>在Desktop执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> app.desktop</span><br><span class="line"><span class="built_in">sudo</span> gedit app.desktop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进行如下配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Exec=/usr/share/code/bin/code</span><br><span class="line">Name=vscode</span><br><span class="line">Icon=/usr/share/code/resources/app/extensions/microsoft-authentication/media/favicon.ico</span><br><span class="line">Terminal=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>Exec和Icon为可执行文件路径和桌面图标路径。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
 </search>
