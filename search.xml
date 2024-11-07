@@ -441,6 +441,29 @@
       </tags>
   </entry>
   <entry>
+    <title>误删除lib64文件后ubuntu开机卡在clean界面</title>
+    <url>/2024/11/07/%E8%AF%AF%E5%88%A0%E9%99%A4lib64%E6%96%87%E4%BB%B6%E5%90%8Eubuntu%E5%BC%80%E6%9C%BA%E5%8D%A1%E5%9C%A8clean%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<p>失误删除lib64文件后ubuntu开机卡在clean界面后的解决办法</p>
+<span id="more"></span>
+
+<ol>
+<li>首先，准备跟自己ubuntu系统版本相同的系统盘</li>
+<li>然后，启动计算机，用系统盘打开</li>
+<li>使用try ubuntu</li>
+<li>用<code>sudo fdisk -l</code>查看自己ubuntu的磁盘分区</li>
+<li>用<code>sudo mount 磁盘分区 mnt/文件夹</code>挂载在目录中</li>
+<li>将需要的文件，如lib64复制到挂载点中(若无法打开某些挂载点的文件，可以使用chmod命令赋予权限)</li>
+<li>拔掉u盘，重启电脑。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>配置快捷方式.md</title>
     <url>/2024/09/28/%E9%85%8D%E7%BD%AE%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
     <content><![CDATA[<p>这篇主要讲述怎么创建linux的快捷方式</p>
