@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-bounce.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":380,"display":"post","padding":72,"offset":72,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在ubuntu22.04上搭建vcs2018环境，主要记录自己的搭建过程以及遇到的问题，主要参考了这篇文章 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41717683&#x2F;article&#x2F;details&#x2F;122267191">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在ubuntu22.04上搭建vcs2018环境">
+<meta property="og:url" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="金金金">
+<meta property="og:description" content="在ubuntu22.04上搭建vcs2018环境，主要记录自己的搭建过程以及遇到的问题，主要参考了这篇文章 https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_41717683&#x2F;article&#x2F;details&#x2F;122267191">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuanglujing.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuanganzhuangqi.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/chuxiansetup.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/jiemian.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang1.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang2.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang3.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/HostID1.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/license.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/dat.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/yanzheng.png">
+<meta property="og:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/lmli.png">
+<meta property="article:published_time" content="2024-11-14T01:52:40.000Z">
+<meta property="article:modified_time" content="2024-12-01T14:26:38.993Z">
+<meta property="article:author" content="金金金">
+<meta property="article:tag" content="环境搭建">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuanglujing.png">
+
+<link rel="canonical" href="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>在ubuntu22.04上搭建vcs2018环境 | 金金金</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">金金金</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">躺又躺不平，卷又卷不赢</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/axx.jpg">
+      <meta itemprop="name" content="金金金">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="金金金">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          在ubuntu22.04上搭建vcs2018环境
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-11-13 20:52:40" itemprop="dateCreated datePublished" datetime="2024-11-13T20:52:40-05:00">2024-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-12-01 09:26:38" itemprop="dateModified" datetime="2024-12-01T09:26:38-05:00">2024-12-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">环境搭建</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>788</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在ubuntu22.04上搭建vcs2018环境，主要记录自己的搭建过程以及遇到的问题，主要参考了这篇文章</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41717683/article/details/122267191">https://blog.csdn.net/qq_41717683/article/details/122267191</a></p>
+<span id="more"></span>
+
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="1、建立安装路径"><a href="#1、建立安装路径" class="headerlink" title="1、建立安装路径"></a>1、建立安装路径</h3><img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuanglujing.png" class="" title="anzhuanglujing">
+
+<p>我是在&#x2F;usr&#x2F;share路径下安装建立的文件夹安装的，如果有权限问题，可以用chmod 777 解决</p>
+<p>各文件夹的作用:</p>
+<ol>
+<li>vcs_install:用来放置解压来的安装文件</li>
+<li>License:用来放置license</li>
+<li>其它：分别为vcs,verdi,scl的安装路径</li>
+</ol>
+<h3 id="2、运行安装器进行安装"><a href="#2、运行安装器进行安装" class="headerlink" title="2、运行安装器进行安装"></a>2、运行安装器进行安装</h3><ol>
+<li><p>进入synopsysinstaller_v5.0文件夹，运行SynopsysInstaller_v5.0.run,记得先chmod +x 给执行权限</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuanganzhuangqi.png" class="" title="anzhuanganzhuangqi">
+
+<p>这里会让你选择安装路径，我选择安装到了当前目录下</p>
+</li>
+<li><p>当前目录下会出现setup.sh文件</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/chuxiansetup.png" class="" title="chuxiansetup">
+</li>
+<li><p>运行setup.sh,进入安装界面</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/jiemian.png" class="" title="jiemian">
+
+<p>这里的无所谓，直接next</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang1.png" class="" title="label">
+
+<p>这里选择vcs的安装包路径</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang2.png" class="" title="anzhuang2">
+
+<p>这里选择安装的地址，第一步创建的目录</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang3.png" class="" title="anzhuang3">
+
+<p>完成该步骤后一路next，然后点击Accept,Install,在最后安装完的弹窗中点击Dismiss</p>
+</li>
+</ol>
+<h3 id="3、生成License文件"><a href="#3、生成License文件" class="headerlink" title="3、生成License文件"></a>3、生成License文件</h3><ol>
+<li><p>首先，在终端使用<code>ifconfig</code>命令查看HostID</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/HostID1.png" class="" title="label">
+
+<p>标注的地方为hostID</p>
+</li>
+<li><p>然后在终端使用<code>hostname</code>命令查看hostname</p>
+</li>
+<li><p>切换至windows系统，使用<font color='red'>scl_keygen_2030</font>文件夹下的<font color = 'red'>scl_keygen.exe</font>文件生成License</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/license.png" class="" title="license">
+
+<p>HOST ID Daemon和HOST ID Feature:填写第一步的HostID</p>
+<p>HOST Name: 填写第二步的hostname</p>
+<p>EXPIRE:填写结束时间</p>
+</li>
+<li><p>得到了Synopsys.dat,转到ubuntu系统</p>
+</li>
+<li><p>修改Synopsys.dat文件内容</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/dat.png" class="" title="label">
+
+<p>第二行，将路径改成自己的，可以无视行末的^M</p>
+</li>
+</ol>
+<h3 id="4、设置环境变量"><a href="#4、设置环境变量" class="headerlink" title="4、设置环境变量"></a>4、设置环境变量</h3><ol>
+<li><p><code>vim ~/.bashrc</code></p>
+</li>
+<li><p>在文件末尾添加如下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#export export SYNOPSYS=&quot;/usr/software/synopsys&quot;</span></span><br><span class="line"><span class="built_in">export</span> VCS_TARGET_ARCH=<span class="string">&quot;amd64&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/usr/stone/software/vcs2018/vcs/O-2018.09-SP2/gui/dve/bin:&quot;</span><span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> DVE_HOME=<span class="string">&quot;/usr/stone/software/vcs2018/vcs/O-2018.09-SP2/gui/dve&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/usr/stone/software/vcs2018/vcs/O-2018.09-SP2/bin:&quot;</span><span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> VCS_HOME=<span class="string">&quot;/usr/stone/software/vcs2018/vcs/O-2018.09-SP2&quot;</span></span><br><span class="line"><span class="comment">#export VCS_ARCH_OVERRIDE=&quot;linux&quot;</span></span><br><span class="line"><span class="comment">#verdi</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2/bin:&quot;</span><span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> VERDI_HOME=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2&quot;</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUX64&quot;</span>:<span class="variable">$LD_LIBRARY_PATH</span></span><br><span class="line"><span class="built_in">export</span> VERDI_DIR=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2&quot;</span></span><br><span class="line"><span class="built_in">export</span> NOVAS_INST_DIR=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2&quot;</span></span><br><span class="line"><span class="built_in">export</span> NPI_PLATFORM=<span class="string">&quot;LINUX64_GNU_472&quot;</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">&quot;<span class="variable">$NOVAS_INST_DIR</span>/share/NPI/lib/LINUX64_GNU_520&quot;</span>:<span class="variable">$LD_LIBRARY_PATH</span></span><br><span class="line"><span class="built_in">export</span> NOVAS_HOME=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#LICENSE</span></span><br><span class="line"><span class="built_in">export</span> SNPSLMD_LICENSE_FILE=<span class="string">&quot;/usr/stone/software/Liscen/Synopsys.dat&quot;</span></span><br><span class="line"><span class="built_in">export</span> SNPSLMD_LICENSE_FILE=27000@自己的host-name</span><br><span class="line"><span class="built_in">export</span> LM_LICENSE_FILE=<span class="string">&quot;/usr/stone/software/Liscen/Synopsys.dat&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> lmli=<span class="string">&quot;/usr/stone/software/SCL2018/scl/2018.06/linux64/bin/lmgrd -c /usr/stone/software/License/Synopsys.dat&quot;</span></span><br><span class="line"><span class="comment">#SCL</span></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/stone/software/SCL2018/scl/2018.06/linux64/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">alias</span> dve=<span class="string">&quot;dve -full64 &amp;&quot;</span></span><br><span class="line"><span class="built_in">alias</span> vcs64=<span class="string">&quot;vcs -full64&quot;</span></span><br><span class="line"><span class="built_in">alias</span> verdi=<span class="string">&quot;verdi -full64 &amp;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>source .bashrc</code>使环境变量生效</p>
+</li>
+</ol>
+<h3 id="5、验证License"><a href="#5、验证License" class="headerlink" title="5、验证License"></a>5、验证License</h3><p>执行<code>sssverify 自己的License路径</code></p>
+<p>直到出现passed</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/yanzheng.png" class="" title="yanzheng">
+
+
+
+<h3 id="6、启动lmgrd"><a href="#6、启动lmgrd" class="headerlink" title="6、启动lmgrd"></a>6、启动lmgrd</h3><p>输入<code>lmli</code>命令启动lmgrd,成功后可以看到</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/lmli.png" class="" title="lmli">
+
+
+
+<h3 id="7、验证"><a href="#7、验证" class="headerlink" title="7、验证"></a>7、验证</h3><p>很多问题会在推荐文章中提到，说下我遇到的问题</p>
+<p>执行vcs时遇到</p>
+<ol>
+<li><p><code>undefined reference to</code>:在vcs命令加上<code>-LDFLAGS -Wl,--no-as-needed</code>选项</p>
+</li>
+<li><p><code>undefined rederence to  pthread_yield</code>:</p>
+<p>原因:vcs_mx_vO-2018.09-SP2&#x2F;linux64&#x2F;lib&#x2F;vcs_save_restore_new.o 中的pthread_yield已在最新的glibc放弃使用了。</p>
+<p>解决办法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> vcs_mx_vO-2018.09-SP2/linux64/lib</span><br><span class="line"><span class="built_in">mv</span> vcs_save_restore_new.o vcs_save_restore_new.o.bak</span><br><span class="line">objcopy --redefine-sym pthread_yield=sched_yield ./vcs_save_restore_new.o.bak ./vcs_save_restore_new.o</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag"># 环境搭建</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/11/07/%E8%AF%AF%E5%88%A0%E9%99%A4lib64%E6%96%87%E4%BB%B6%E5%90%8Eubuntu%E5%BC%80%E6%9C%BA%E5%8D%A1%E5%9C%A8clean%E7%95%8C%E9%9D%A2/" rel="prev" title="误删除lib64文件后ubuntu开机卡在clean界面">
+      <i class="fa fa-chevron-left"></i> 误删除lib64文件后ubuntu开机卡在clean界面
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%BB%BA%E7%AB%8B%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.</span> <span class="nav-text">1、建立安装路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E8%BF%90%E8%A1%8C%E5%AE%89%E8%A3%85%E5%99%A8%E8%BF%9B%E8%A1%8C%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">2、运行安装器进行安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E7%94%9F%E6%88%90License%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">3、生成License文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">1.4.</span> <span class="nav-text">4、设置环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E9%AA%8C%E8%AF%81License"><span class="nav-number">1.5.</span> <span class="nav-text">5、验证License</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E5%90%AF%E5%8A%A8lmgrd"><span class="nav-number">1.6.</span> <span class="nav-text">6、启动lmgrd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E9%AA%8C%E8%AF%81"><span class="nav-number">1.7.</span> <span class="nav-text">7、验证</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="金金金"
+      src="/images/axx.jpg">
+  <p class="site-author-name" itemprop="name">金金金</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/a-heart3" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;a-heart3" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/17302241931@163.com" title="E-Mail → 17302241931@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">金金金</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">6k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">23 分钟</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

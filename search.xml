@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>hexo的使用</title>
+    <url>/2024/09/28/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>hexo的简单使用方法</p>
+<span id="more"></span>
+
+<ul>
+<li><p>发表文章使用<code>hexo new title</code>命令，然后在hexo&#x2F;source&#x2F;_posts目录下更改</p>
+</li>
+<li><p>about页面，categories页面以及tags页面的创建:</p>
+<ol>
+<li><p>使用<code>hexo new page about</code>命令， 进入source&#x2F;about修改index.md即可</p>
+</li>
+<li><p>修改index.md的信息如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: about</span><br><span class="line">date:</span><br><span class="line">type: &quot;about&quot;				//一定要有空格</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后在index.md写上about页面的介绍内容即可</p>
+</li>
+</ol>
+</li>
+<li><p>categories和tags的页面创建方法与about一致。但是，categories和tags在将要发表的博客中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title:</span><br><span class="line">data:</span><br><span class="line">tags:</span><br><span class="line">	- tags1</span><br><span class="line">	- tags2</span><br><span class="line">categories:</span><br><span class="line">	- categories1</span><br><span class="line">	- categories2</span><br></pre></td></tr></table></figure>
+
+<p>tags可以并列，但是categories不能并列创建,此处创建完成后，categories2会成为categories1的子目录。</p>
+</li>
+<li><p>最后是发布博客时，图片显示的问题</p>
+<ol>
+<li><p>首先，使用<code>hexo-image-link</code>命令下载插件，该插件可以将markdown的图片自动生成资源</p>
+</li>
+<li><p>然后设置hexo目录下的_config.yml文件的<code>post_asset_folder: true</code></p>
+</li>
+<li><p>此时，使用<code>hexo new title</code>命令创建新的博客时，会在同目录下生成一个同名文件夹，将需要用的图片放置到 该文件夹。</p>
+</li>
+<li><p>最后在文件中引用图片<code>![label](图片的相对路径)</code>(建议使用markdown编辑器)</p>
+</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>工具的使用</category>
+      </categories>
+      <tags>
+        <tag>工具的使用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu 22.04环境下 vivado 安装配置</title>
+    <url>/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>这篇文章主要讲述的是如何在ubuntu22.04的环境下对vivado进行安装配置</p>
+<span id="more"></span>
+
+
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>建议使用<code>web staller</code>安装包（ubuntu下载大文件可能会失败)</p>
+</li>
+<li><p>下载后对安装包执行:<code>sudo chmod 777 ***.bin</code></p>
+</li>
+<li><p>执行<code>***.bin</code></p>
+</li>
+<li><p>开始安装</p>
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85.png" class="" title="开始安装">
+</li>
+<li><p>点击next，进入版本选择，选择standard版本</p>
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E7%89%88%E6%9C%AC%E9%80%89%E6%8B%A9.png" class="" title="版本选择">
+</li>
+<li><p>点击next，将配置调整为下图:</p>
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/%E9%85%8D%E7%BD%AE%E9%80%89%E6%8B%A9.png" class="" title="配置选择">
+
+<p>注意，这样安装的vivado只能使用Artix-7开发板，不过满足我的学习要求是ok的</p>
+</li>
+<li><p>点击next，出现的选项都点同意</p>
+</li>
+<li><p>选择一个路径安装</p>
+</li>
+<li><p>ubuntu安装之前需要下载一些库文件支持</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get upgrade</span><br><span class="line"><span class="built_in">sudo</span> apt-get install libncurses5</span><br><span class="line"><span class="built_in">sudo</span> apt-get install libninfo5</span><br><span class="line"><span class="built_in">sudo</span> apt-get install libncurses5-dev libncursesw5-dev</span><br><span class="line"><span class="built_in">sudo</span> apt-get install ncurses-compat-libs	<span class="comment">#最后这个可能安装不成功，不碍事</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对于ubuntu用户，我们不得不每次进入vivado安装路径，用命令执行.&#x2F;vivado来运行，而且这样还会在主目录下生成乱七八糟的log和journal。下面来讲一下如果ubuntu没有自动生成菜单快捷方式我们应该怎么办。</p>
+<ul>
+<li><p>进入桌面</p>
+</li>
+<li><p>执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> vivado.desktop 			//创建一个快捷方式</span><br><span class="line"><span class="built_in">sudo</span> gedit ./vivado.desktop		//用gedit编辑这个文件</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Exec=/home/axx/tools/Xilinx/Vivado/2023.1/bin/vivado -nojou -nolog</span><br><span class="line">Name=Vivado2023.1</span><br><span class="line">GenericName=The IDE of choice <span class="keyword">for</span> verilog development.</span><br><span class="line">Icon=/home/axx/tools/Xilinx/Vivado/2023.1/doc/images/vivado_logo.ico</span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">Categories=Development;IDE;Vivado</span><br></pre></td></tr></table></figure>
+
+<p>exec, icon的；目录需要替换成自己的vivado安装目录</p>
+</li>
+<li><p>给图标权限</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><ol>
+<li><p>下载vscode</p>
+</li>
+<li><p>在vivado tools-&gt;settings-&gt;Text Editor处改为vscode</p>
+</li>
+<li><p>语法高亮： 下载<code>Verilog-HDL/SystemVerilog/Bluespec SystemVerilog</code>插件</p>
+</li>
+<li><p>ctags的安装使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt update</span><br><span class="line"><span class="built_in">sudo</span> apt install universal-ctags</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/ctags.png" class="" title="ctags">
+
+<p>这里<code>ctags</code>的路径可以通过<code>whereis ctags</code>查看</p>
+<p><font color = 'red'>注意:</font>如果想要ctags生效，需要vscode打开文件夹，打开单个文件ctags不生效</p>
+</li>
+<li><p>语法检查:使用verilator</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install verilator</span><br><span class="line"><span class="built_in">sudo</span> apt-get install gtkwave</span><br></pre></td></tr></table></figure>
+
+<p>设置</p>
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/verilator.png" class="" title="verilator">
+
+<img src="/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/verilator2.png" class="" title="verilator2">
+
+<p>设置完成后重启vscode语法纠错</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu系统的美化.md</title>
+    <url>/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>刚刚下好的ubuntu界面可能不是那么美观，我们可以做一些改动使它好看一些。</p>
+<span id="more"></span>
+
+<ul>
+<li><p>首先下载相关的包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install gnome-tweak-tool</span><br><span class="line"><span class="built_in">sudo</span> apt install gnome-shell-extensions</span><br><span class="line"><span class="built_in">sudo</span> apt install chrmoe-gnome-shell</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 <a href="https://extensions.gnome.org/">https://extensions.gnome.org/</a> 搜索 <code>User Themes</code>安装</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/1.png" class="" title="label">
+
+<p>将按钮on打开即可自动下载</p>
+</li>
+<li><p>使用 <code>sudo apt install ocs-url</code>下载ocs-url工具</p>
+</li>
+<li><p>在 <a href="https://www.pling.com/">https://www.pling.com/</a> 找到喜欢的应用程序，光标，图标，shell主题，在命令行输入gnome-tweaks或搜索”优化”切换主题</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/2.png" class="" title="label">
+
+<p>使用ocs-install下载</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/3.png" class="" title="label">
+
+<p>若是下载后，没有出现自己下载的主题，可以注销用户后重新登陆即可。</p>
+<p>若要更换背景图片，需要把图片放在&#x2F;usr&#x2F;share&#x2F;backgrounds的目录下.</p>
+</li>
+<li><p>安装 【dash to dock】插件，与安装 【User Themes】方式相同。</p>
+</li>
+<li><p>在Extentions——-&gt;dash to dock 设置dock页面</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/4.png" class="" title="label">
+
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/5.png" class="" title="label">
+
+<p>dash to dock配置的是这个常用app栏。</p>
+</li>
+<li><p>同理， 下载【Arc Menu】， 并安装打开。</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/6.png" class="" title="label">
+
+<p>Arc Menu配置的是顶部菜单栏</p>
+</li>
+<li><p>最后，我的配置下，整个ubuntu的界面如下：</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/7.png" class="" title="label"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>个人blog搭建及美化.md</title>
+    <url>/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>本文主要介绍如何在linux环境下利用github方式搭建自己的个人博客，主要参考了</p>
+<p><a href="https://pdpeng.github.io/2022/01/19/setup-personal-blog/">https://pdpeng.github.io/2022/01/19/setup-personal-blog/</a></p>
+<p><a href="https://blog.csdn.net/Bennnnnnn/article/details/128000842?spm=1001.2101.3001.6650.6&utm_medium=distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-128000842-blog-77946677.237%5Ev3%5Ewap_relevant_t0_download&depth_1-utm_source=distribute.wap_relevant.none-task-blog-2~default~BlogCommendFromBaidu~Rate-6-128000842-blog-77946677.237%5Ev3%5Ewap_relevant_t0_download">Bennnnnnn大佬的blog</a></p>
+<span id="more"></span>
+
+
+
+<h2 id="个人blog的搭建"><a href="#个人blog的搭建" class="headerlink" title="个人blog的搭建"></a>个人blog的搭建</h2><p>建议按照本地—&gt;github—&gt;服务器的顺序来，从简单到难，比较容易坚持下去</p>
+<ul>
+<li><p>首先，安装一些必要的开发工具，<code>git</code>、 <code>node.js</code>、<code>npm</code>、以及一个喜欢的IDE（这里我用的是vim)，在linux环境下均可使用<code>sudo apt-get install </code>命令下载。</p>
+</li>
+<li><p>下载一个博客框架，这里我用的是hexo</p>
+<p><code>npm install hexo-cli -g</code></p>
+</li>
+<li><p>新建一个文件夹，并切换至该文件夹路径，执行</p>
+<p><code>hexo init</code>指令</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/init_1.png" class="" title="label">
+
+<p>执行成功后使用<code>ls</code>查看当前目录内容</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/init_success.png" class="" title="label">
+</li>
+<li><p>简单认识下hexo的几个比较常用到的文件:</p>
+<ul>
+<li>public:最终所见网页的所有内容</li>
+<li>_config.yml:站点配置文件，设定一些公开信息等</li>
+<li>themes:存放主题文件，hexo根据主题生成静态网页</li>
+<li>source:用于存放用户资源（_post文件夹下会存放用户的markdown文件）</li>
+</ul>
+</li>
+<li><p>执行<code>hexo s</code>命令</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/s1.png" class="" title="s1">
+
+<p>打开显示的网址</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/s2.png" class="" title="s2">
+</li>
+<li><p>到这里，其实已经完成了一个简易的blog搭建，下面其实就是要将blog部署到github上生成网页</p>
+</li>
+<li><p>首先新建一个仓库</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/github_create1.png" class="" title="github_create1">
+
+<p><font color = 'red'>注意</font>:这里的仓库名一定要写用户名.github.io,且一定是公开的</p>
+</li>
+<li><p>配置_config.yml文件</p>
+<p>修改文件中deploy部分内容如下</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">仓库连接</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p><font color = 'red'>注意</font>:这里的仓库连接最好使用ssh,git的ssh连接可以参考其他博文</p>
+</li>
+<li><p>执行<code>hexo d</code>指令</p>
+<p>此时，返回github仓库可以看到</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/github2.png" class="" title="github2">
+</li>
+<li><p>对仓库进行设置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/github3.png" class="" title="github3">
+
+<p>更改branch的部分即可，如果没有出现最上面的<em><strong>Your site is at</strong></em>可以多刷新几次页面。</p>
+<p><font color = 'red'>注意</font>:因为一个github只能申请一个个人页面，所以这里给出的网址是不正确的。</p>
+</li>
+<li><p>这是搜索该网页，将出现我们之前看到的页面</p>
+</li>
+<li><p>到这里，将个人blog部署到github就完成了，但是我们还需要对自己的hexo的代码进行管理，所以在文件夹下执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin 管理代码的仓库名称</span><br></pre></td></tr></table></figure>
+
+<p><font color = 'red'>注意</font>:与之前在_config.yml文件中配置的repo是两个不同的仓库</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E6%90%AD%E5%BB%BA%E5%AE%8C%E6%88%90.png" class="" title="搭建完成">
+
+<p>如上图所示，一共两个不同的仓库。</p>
+</li>
+</ul>
+<h2 id="blog的美化"><a href="#blog的美化" class="headerlink" title="blog的美化"></a>blog的美化</h2><p>搭建完成后，页面不是特别好看，所以还可以再美化一下页面。</p>
+<ul>
+<li><p>首先在<a href="https://hexo.io/themes/%E4%B8%AD%E9%80%89%E6%8B%A9%E8%87%AA%E5%B7%B1%E5%96%9C%E6%AC%A2%E7%9A%84%E4%B8%BB%E9%A2%98%E4%B8%8B%E8%BD%BD%EF%BC%8C%E6%88%91%E9%80%89%E6%8B%A9%E7%9A%84%E6%98%AFnext%E4%B8%BB%E9%A2%98%E3%80%82">https://hexo.io/themes/中选择自己喜欢的主题下载，我选择的是next主题。</a></p>
+</li>
+<li><p>然后在_config.yml文件中配置使用主题</p>
+<p><code>theme: next</code><font color = 'red'>注意</font>:要有空格</p>
+<p>配置完成后执行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo cl</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>查看效果</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next1.png" class="" title="next1">
+
+<p>貌似更难看了，没事，我们可以继续慢慢修改主题文件。</p>
+</li>
+<li><p>首先，在.&#x2F;themes&#x2F;next目录下的_config.yml文件配置<code>scheme: Gemini</code>，注释掉其他scheme选项，scheme是next提供的主题选项。</p>
+<p><font color = 'red'>注意</font>:之后会i频繁出现两个_config.yml文件，一个是主站点的config文件，一个是next主题的config文件，在下面需要修改时我会进行说明。</p>
+<p>更改后效果如图</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next2.png" class="" title="next2">
+</li>
+<li><p>然后我们可以设置目录信息</p>
+<p>打开主题下的_config.yml文件，找到menu，选择自己想要的目录内容，取消掉注释即可。生成页面如下</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next3.png" class="" title="next3">
+</li>
+<li><p>可以看到，关于个人的资料信息卡还没有设置，所以我们可以先设置一下自己的个人信息卡，在主站点的_config.yml文件进行配置site如下。</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next3%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF.png" class="" title="next3个人信息">
+
+<p>结果如下</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/next3%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF2.png" class="" title="next3个人信息2">
+</li>
+<li><p>注意到底部有个Powered by Hexo&amp;Next.Gemini</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E5%BA%95%E9%83%A8%E5%BC%BA%E5%8A%9B%E9%A9%B1%E5%8A%A8.png" class="" title="底部强力驱动">
+
+<p>有些影响美观，可以删除，在next下的_config.yml文件配置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/power%E5%8E%BB%E9%99%A4.png" class="" title="底部强力驱动">
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/powers.png" class="" title="powers">
+</li>
+<li><p>配置代码模块高亮显示以及显示风格，首先，在主站的_config.yml文件配置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE.png" class="" title="代码高亮">
+
+<p>然后在主题下的_config.yml文件文件配置代码模板样式和粘贴按钮样式</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E4%BB%A3%E7%A0%81%E6%A0%B7%E5%BC%8F.png" class="" title="代码样式">
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E4%BB%A3%E7%A0%81%E6%A0%B7%E5%BC%8F%E7%BB%93%E6%9E%9C.png" class="" title="代码样式结果">
+</li>
+<li><p>我们发现，没有搜索栏，这样自己和别人想看某篇博客时会比较难找</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-search --save</span><br></pre></td></tr></table></figure>
+
+<p>下载搜索插件</p>
+<p>然后在主站点_config.yml页面最下方加入如下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 1000</span><br></pre></td></tr></table></figure>
+
+<p>然后在主题的_config.yml页面找到并打开local_search的开关</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/search.png" class="" title="search">
+</li>
+<li><p>然后我们可以安装字数统计和阅读时长</p>
+<p><code>npm install hexo-word-counter</code></p>
+<p>在主站的config文件中添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  symbols: true</span><br><span class="line">  time: true</span><br><span class="line">  total_symbols: true</span><br><span class="line">  total_time: true</span><br><span class="line">  exclude_codeblock: false</span><br><span class="line">  wpm: 275</span><br><span class="line">  suffix: &quot;mins.&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/word.png" class="" title="word">
+</li>
+<li><p>然后我们可以设置以下个人信息的头像以及交友链接</p>
+<p>首先是头像，把自己想要的头像放在themes&#x2F;next&#x2F;source&#x2F;images文件夹下，然后在主题的_config.yml的文件中配置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/touxiang.png" class="" title="touxiang">
+
+<p>然后配置自己的social连接</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/social.png" class="" title="social">
+
+<p>结果</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/touxiangwancheng.png" class="" title="touxiang">
+</li>
+<li><p>然后我们把背景图片换一换</p>
+<p>首先把背景图片放在themes&#x2F;next&#x2F;source&#x2F;images中，然后在hexo&#x2F;source目录下新建data文件夹，在data中新建styles.stl文件（<font color = 'red'>注意:</font>在hexo下而不是next下新建）,在styles.stl添加如下代码</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/background.png" class="" title="background">
+
+<p>然后在next目录下的配置文件找到<code>custom_file_path</code>打开style选项，效果如下</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/background2333.png" class="" title="background2333">
+</li>
+<li><p>边框圆角设置</p>
+<p>hexo&#x2F;source&#x2F;_data&#x2F;variables.styl</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$border-radius-inner			= 20px 20px 20px 20px;</span><br><span class="line">$border-radius					= 20px;</span><br></pre></td></tr></table></figure>
+
+<p>打开custom_file_path中的variable注释</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/yuanjiao.png" class="" title="yuanjiao">
+</li>
+<li><p>设置透明度</p>
+<p>直接在_data&#x2F;styles.styl的body中加入</p>
+<p><code>opacity: 0.85</code>0.85为自己的透明度设置</p>
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E9%80%8F%E6%98%8E%E5%BA%A6.png" class="" title="透明度">
+</li>
+<li><p>因为打开页面后，内容和标签都在页面最顶端，我会感觉有点不舒服，所以想把内容和边框信息往下拉一些</p>
+<p>文章区域调整，在themes&#x2F;next&#x2F;source&#x2F;css&#x2F;_common&#x2F;components&#x2F;post&#x2F;post.styl做如下修改(如果没有post.styl,则在index.styl修改)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.use-motion &#123;</span><br><span class="line">	if (hexo-config(&#x27;motion.transition.post_block&#x27;)) &#123;</span><br><span class="line">		.post-bock&#123;</span><br><span class="line">			margin-top: 60px;</span><br><span class="line">			margin-bottom: 60px;</span><br><span class="line">			margin-left: 2px;</span><br><span class="line">			padding-top: 45px;</span><br><span class="line">			opacity: 0.95;</span><br><span class="line">		&#125;</span><br><span class="line">		.pagination, .comments &#123;</span><br><span class="line">			visibility: hidden;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>右侧菜单栏修改，在themes&#x2F;next&#x2F;source&#x2F;css&#x2F;_common&#x2F;outline&#x2F;header中修改header.styl(或者index.styl)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.header-inner &#123;</span><br><span class="line">	margin-top: 60px;</span><br><span class="line">	padding-top: 45px;</span><br><span class="line">	display: flex;</span><br><span class="line">	flex-shrink: 0;</span><br><span class="line">	padding: 0 10px;</span><br><span class="line">	border-radius: 18.8px 18.8px				//设置边框圆角</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/09/25/%E4%B8%AA%E4%BA%BAblog%E6%90%AD%E5%BB%BA%E5%8F%8A%E7%BE%8E%E5%8C%96/%E6%9C%80%E7%BB%88%E7%BB%93%E6%9E%9C.png" class="" title="最终结果">
+</li>
+<li><p>至此，利用hexo搭建个人网站和美化已经完成，大家别忘了<code>hexo d</code>部署到自己的网站上去，如果没有成功，那么就把网页浏览历史清空再试几次</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于学习</title>
+    <url>/2024/11/05/%E5%85%B3%E4%BA%8E%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>本篇blog用于介绍自己关于学习的一些想法。</p>
+<span id="more"></span>
+
+
+
+<h2 id="首先，什么是学习？"><a href="#首先，什么是学习？" class="headerlink" title="首先，什么是学习？"></a>首先，什么是学习？</h2><p>在我看来，学是模仿，习是习以为常。即我们要从他人，从自然界看到一种现象，并且不断模仿，最后让自己习惯这种现象。</p>
+<p>当然，上述只是我粗浅的理解，更深入一些的理解则为:模仿—&gt;熟练掌握—&gt;创新输出。这三个步骤缺一不可。新奇的想法，伟大的想法，提出的前提是对前人知识的熟练掌握，再在此基础上提出自己的创新。亦或是对自然有浓厚的好奇心，在不断的观察和模仿中掌握某些知识，并提出新的观点。</p>
+<p>那么，仅仅是传统的理工科，文科的学习才能是学习吗？其实并不是的，舞蹈，体育，美术等艺术的表现形式也是学习。在工作社会中如何与人交往，如何与他人进行有效的沟通，这也是学习。街边的小吃怎么做才能更好吃等等这些都是学习。</p>
+<p>学习的内容广，光在一门学问上有所深造已经是极难的事情了，如果有人对很多内容都有很深的研究，那他就十分值得我们敬佩。</p>
+<p>这些就是我自己对学习的理解。</p>
+<h2 id="那么，为什么要学习？"><a href="#那么，为什么要学习？" class="headerlink" title="那么，为什么要学习？"></a>那么，为什么要学习？</h2><p>学习的目的可以有伟大的，比如“为中华之崛起而读书”，也可以有平凡的，即“找到一份好的工作，以后有一个好的生活”。对于以前一种目的学习的人，我们需要敬仰。因为祖国的发展，科学技术的进步需要仰丈他们。对于以后一种目的学习的人，我们也应该尊重，向往美好的生活本就是人类乃至生物的天性，安安稳稳，积极向上的生活也是在为国家做贡献。</p>
+<p>其实，在如今的社会，学习对于我们来说，更需要满足第二种目的。ai的快速发展，在可预见的未来，可能会淘汰掉越来越多的劳动力。所以，要想不被淘汰掉，我们需要不断的学习，不断的精进自己，才能为自己博一个好的未来。</p>
+<p>其次，学习带来的也不仅仅是金钱，地位的提升，以及一种本能的满足感。人类从生下来就有求知欲，不然，为什么大家都觉得小孩子脑子里的问题多？稀奇古怪的想法多呢？在学生阶段，总会有那么几次，你会为自己千辛万苦解出来的问题而欢呼雀跃，总会想疯狂得向别人展示你千辛万苦学来的体育运动技术。这就是学习带给我们的满足感，相较于一些没有营养的短视频，烂片，烂游戏（注意：我这里说的是烂片，烂游戏等等，好的电视剧，游戏总会给你一些思考，让你去想了解一些东西），这种满足感是持久的。</p>
+<p>再就是思维方式的改变，这点在我来看就是独立思考的能力，以及求解真相的能力。比如，现在由于自媒体的快速发展，以及短视频的推荐算法，会导致很多人容易变得人云亦云，被虚假的新闻报道带偏了自己的判断，并被困在了信息茧房之中。这无疑是一种悲哀，每个人都是一个独立的个体，既然独立，那么就应该有自己的思考和判断，而不是轻易的被带走了自己的想法。这种时候，自己学习到的知识就很有说服力。有独立思考的能力是可贵的，虽然在日常生活中偶尔被带偏思考无所谓，但是在自己的所学领域内被带歪是一件可怕的事，可能会给你带来损失。（这就好比有人装逼装到了自己擅长的领域，总规是能看个乐子嘛）</p>
+<p>最后，其实学习也会带来想法的改变，但这也是一些人的痛苦的来源。自己辛辛苦苦，寒窗苦读很多年，发现不如投胎投的好的同学。在市场的大环境下，工资和生活水平可能不如学历不如自己的一些人。优秀的人个方面都很优秀带来的压力。这些确实无法避免，人生的发展与机遇也有很大的关系。我也曾被这些困惑，也曾质疑过学习的作用，后来我想了想，分析了自己的条件和性格，发现自己如果不学习，过得并不会比现在好，甚至可能会差很多。于是，我放平了心态，我只需要有自己喜欢的事，有自己喜欢的人，每天过得再好一点点就行了。这也是学习给我带来的，相较于不上学，我能够看到更多不同生活状况的同学，与他们交朋友，听他们的看法，对自己的想法也在不断改变，最后慢慢形成自己的生活观。</p>
+<h2 id="最后，怎么学习？"><a href="#最后，怎么学习？" class="headerlink" title="最后，怎么学习？"></a>最后，怎么学习？</h2><p>首先，学习的范围很广，如果都只懂皮毛的话，其实也没有什么意义。最好的选择就是选两三门自己特别感兴趣的学科认真学习，学的深入一些。在常年的文理科纷争当中，我一直支持两者都学（即理科也要了解一些文科知识，文科也要了解一些理科知识）,知识，艺术这些都是相通的，都有他们的美感。</p>
+<p>关于学习方向，我现在能想到也就这些。关于学习的方法，我想大概分为几个方面。</p>
+<ol>
+<li>老师讲解：老师讲解我觉得是入门非常重要的一环，好的老师可以激起学生对于该学科的兴趣，并能够将学科脉络，重点思想理清，使得学生一开始并不需要过多的深入细节而迷失。（大佬可能直接进行下一步了）</li>
+<li>读书，做实践：书中会对知识的细节有所补充，实践（对于工科来说，可能是课程lab），是帮助自己更加深入理解知识，培养自己发现问题，解决问题方法的利器。</li>
+<li>做输出:即写报告，将老师所讲，读书所得，实践所得总结，理清，加入自己的理解，写成新的报告，文章，博文分享（输出）</li>
+<li>创新:在做实验时遇到的问题，读书上课想到的问题，看看自己能不能做解决优化。以批判性思维学习，不仅要看别人讲了什么，还要看看别人在文章中没讲什么（这些可能就是创新的点）。</li>
+</ol>
+<p>关于学习读书的步骤，我个人是分成了以下几个部分:</p>
+<ol>
+<li>听课，老师讲的，提到的大多是重点，需要在书中重点看。</li>
+<li>读书（书读三遍）<ol>
+<li>首先是通篇概览，重点关注老师课上讲的部分，将自己的思考，疑惑批注下来，方便以后提问或查找解答。</li>
+<li>结合实践不停翻阅：实践中遇到的问题要记录，实践中经常出现的问题也是重点，如何解决实践中的问题，解决思路要及时记录下来。</li>
+<li>输出时翻阅：此时应将旁注中的思考结合实践整理，将疑惑通过问老师和同学，或者上网查资料解决，整理输出。</li>
+</ol>
+</li>
+</ol>
+<p>关于解决创新性问题，我目前能想到的方法是以下几点（完全借鉴《怎样解题》）</p>
+<ol>
+<li>我们可以把创新点看作一道题目，其实就是怎么解题</li>
+<li>首先，要充分理解题目，即我需要知道<ol>
+<li>我的目标是什么。</li>
+<li>我现在有哪些知识和条件可以用到</li>
+<li>我现在有哪些数据可以用到。</li>
+</ol>
+</li>
+<li>找到已知数据，条件，知识和目标的联系<ol>
+<li>类比：以前有没有解决过类似的题目，是怎么解决的？这次跟之前的问题的条件和数据有什么不同？</li>
+<li>辅助：辅助元素，辅助题目，能不能帮助我们更好的理解题目？</li>
+<li>大问题分解成不同的小问题来解决（能分解为相似的小问题最好了）</li>
+<li>条件的排列组合，看能不能做出一些新的花样来</li>
+<li>问题导向：解决这个问题，我需要什么数据和条件，那么这个数据和条件我有吗？如果没有的话，我可以通过哪些数据和条件获得呢？一步步逆向推导</li>
+</ol>
+</li>
+<li>制定解决方案并执行：<ol>
+<li>分模块，分步骤</li>
+<li>重点检查主要步骤，然后去看细节无误</li>
+</ol>
+</li>
+<li>检验：<ol>
+<li>正向检验，每一个数据都应该能够得到你要的条件和数据，直到结果</li>
+<li>想想还有没有其他办法？</li>
+<li>总结记录。</li>
+</ol>
+</li>
+</ol>
+<p>以上就是目前我关于学习的想法，也是我自己希望自己能达到的学习状态。</p>
+]]></content>
+      <categories>
+        <category>想法</category>
+      </categories>
+      <tags>
+        <tag>想法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在ubuntu22.04上搭建vcs2018环境</title>
+    <url>/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[<p>在ubuntu22.04上搭建vcs2018环境，主要记录自己的搭建过程以及遇到的问题，主要参考了这篇文章</p>
+<p><a href="https://blog.csdn.net/qq_41717683/article/details/122267191">https://blog.csdn.net/qq_41717683/article/details/122267191</a></p>
+<span id="more"></span>
+
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><h3 id="1、建立安装路径"><a href="#1、建立安装路径" class="headerlink" title="1、建立安装路径"></a>1、建立安装路径</h3><img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuanglujing.png" class="" title="anzhuanglujing">
+
+<p>我是在&#x2F;usr&#x2F;share路径下安装建立的文件夹安装的，如果有权限问题，可以用chmod 777 解决</p>
+<p>各文件夹的作用:</p>
+<ol>
+<li>vcs_install:用来放置解压来的安装文件</li>
+<li>License:用来放置license</li>
+<li>其它：分别为vcs,verdi,scl的安装路径</li>
+</ol>
+<h3 id="2、运行安装器进行安装"><a href="#2、运行安装器进行安装" class="headerlink" title="2、运行安装器进行安装"></a>2、运行安装器进行安装</h3><ol>
+<li><p>进入synopsysinstaller_v5.0文件夹，运行SynopsysInstaller_v5.0.run,记得先chmod +x 给执行权限</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuanganzhuangqi.png" class="" title="anzhuanganzhuangqi">
+
+<p>这里会让你选择安装路径，我选择安装到了当前目录下</p>
+</li>
+<li><p>当前目录下会出现setup.sh文件</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/chuxiansetup.png" class="" title="chuxiansetup">
+</li>
+<li><p>运行setup.sh,进入安装界面</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/jiemian.png" class="" title="jiemian">
+
+<p>这里的无所谓，直接next</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang1.png" class="" title="label">
+
+<p>这里选择vcs的安装包路径</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang2.png" class="" title="anzhuang2">
+
+<p>这里选择安装的地址，第一步创建的目录</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/anzhuang3.png" class="" title="anzhuang3">
+
+<p>完成该步骤后一路next，然后点击Accept,Install,在最后安装完的弹窗中点击Dismiss</p>
+</li>
+</ol>
+<h3 id="3、生成License文件"><a href="#3、生成License文件" class="headerlink" title="3、生成License文件"></a>3、生成License文件</h3><ol>
+<li><p>首先，在终端使用<code>ifconfig</code>命令查看HostID</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/HostID1.png" class="" title="label">
+
+<p>标注的地方为hostID</p>
+</li>
+<li><p>然后在终端使用<code>hostname</code>命令查看hostname</p>
+</li>
+<li><p>切换至windows系统，使用<font color='red'>scl_keygen_2030</font>文件夹下的<font color = 'red'>scl_keygen.exe</font>文件生成License</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/license.png" class="" title="license">
+
+<p>HOST ID Daemon和HOST ID Feature:填写第一步的HostID</p>
+<p>HOST Name: 填写第二步的hostname</p>
+<p>EXPIRE:填写结束时间</p>
+</li>
+<li><p>得到了Synopsys.dat,转到ubuntu系统</p>
+</li>
+<li><p>修改Synopsys.dat文件内容</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/dat.png" class="" title="label">
+
+<p>第二行，将路径改成自己的，可以无视行末的^M</p>
+</li>
+</ol>
+<h3 id="4、设置环境变量"><a href="#4、设置环境变量" class="headerlink" title="4、设置环境变量"></a>4、设置环境变量</h3><ol>
+<li><p><code>vim ~/.bashrc</code></p>
+</li>
+<li><p>在文件末尾添加如下内容</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#export export SYNOPSYS=&quot;/usr/software/synopsys&quot;</span></span><br><span class="line"><span class="built_in">export</span> VCS_TARGET_ARCH=<span class="string">&quot;amd64&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/usr/stone/software/vcs2018/vcs/O-2018.09-SP2/gui/dve/bin:&quot;</span><span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> DVE_HOME=<span class="string">&quot;/usr/stone/software/vcs2018/vcs/O-2018.09-SP2/gui/dve&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/usr/stone/software/vcs2018/vcs/O-2018.09-SP2/bin:&quot;</span><span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> VCS_HOME=<span class="string">&quot;/usr/stone/software/vcs2018/vcs/O-2018.09-SP2&quot;</span></span><br><span class="line"><span class="comment">#export VCS_ARCH_OVERRIDE=&quot;linux&quot;</span></span><br><span class="line"><span class="comment">#verdi</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2/bin:&quot;</span><span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> VERDI_HOME=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2&quot;</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2/share/PLI/lib/LINUX64&quot;</span>:<span class="variable">$LD_LIBRARY_PATH</span></span><br><span class="line"><span class="built_in">export</span> VERDI_DIR=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2&quot;</span></span><br><span class="line"><span class="built_in">export</span> NOVAS_INST_DIR=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2&quot;</span></span><br><span class="line"><span class="built_in">export</span> NPI_PLATFORM=<span class="string">&quot;LINUX64_GNU_472&quot;</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="string">&quot;<span class="variable">$NOVAS_INST_DIR</span>/share/NPI/lib/LINUX64_GNU_520&quot;</span>:<span class="variable">$LD_LIBRARY_PATH</span></span><br><span class="line"><span class="built_in">export</span> NOVAS_HOME=<span class="string">&quot;/usr/stone/software/verdi/verdi/Verdi_O-2018.09-SP2&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#LICENSE</span></span><br><span class="line"><span class="built_in">export</span> SNPSLMD_LICENSE_FILE=<span class="string">&quot;/usr/stone/software/Liscen/Synopsys.dat&quot;</span></span><br><span class="line"><span class="built_in">export</span> SNPSLMD_LICENSE_FILE=27000@自己的host-name</span><br><span class="line"><span class="built_in">export</span> LM_LICENSE_FILE=<span class="string">&quot;/usr/stone/software/Liscen/Synopsys.dat&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> lmli=<span class="string">&quot;/usr/stone/software/SCL2018/scl/2018.06/linux64/bin/lmgrd -c /usr/stone/software/License/Synopsys.dat&quot;</span></span><br><span class="line"><span class="comment">#SCL</span></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/stone/software/SCL2018/scl/2018.06/linux64/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">alias</span> dve=<span class="string">&quot;dve -full64 &amp;&quot;</span></span><br><span class="line"><span class="built_in">alias</span> vcs64=<span class="string">&quot;vcs -full64&quot;</span></span><br><span class="line"><span class="built_in">alias</span> verdi=<span class="string">&quot;verdi -full64 &amp;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行<code>source .bashrc</code>使环境变量生效</p>
+</li>
+</ol>
+<h3 id="5、验证License"><a href="#5、验证License" class="headerlink" title="5、验证License"></a>5、验证License</h3><p>执行<code>sssverify 自己的License路径</code></p>
+<p>直到出现passed</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/yanzheng.png" class="" title="yanzheng">
+
+
+
+<h3 id="6、启动lmgrd"><a href="#6、启动lmgrd" class="headerlink" title="6、启动lmgrd"></a>6、启动lmgrd</h3><p>输入<code>lmli</code>命令启动lmgrd,成功后可以看到</p>
+<img src="/2024/11/13/%E5%9C%A8ubuntu22-04%E4%B8%8A%E6%90%AD%E5%BB%BAvcs2018%E7%8E%AF%E5%A2%83/lmli.png" class="" title="lmli">
+
+
+
+<h3 id="7、验证"><a href="#7、验证" class="headerlink" title="7、验证"></a>7、验证</h3><p>很多问题会在推荐文章中提到，说下我遇到的问题</p>
+<p>执行vcs时遇到</p>
+<ol>
+<li><p><code>undefined reference to</code>:在vcs命令加上<code>-LDFLAGS -Wl,--no-as-needed</code>选项</p>
+</li>
+<li><p><code>undefined rederence to  pthread_yield</code>:</p>
+<p>原因:vcs_mx_vO-2018.09-SP2&#x2F;linux64&#x2F;lib&#x2F;vcs_save_restore_new.o 中的pthread_yield已在最新的glibc放弃使用了。</p>
+<p>解决办法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> vcs_mx_vO-2018.09-SP2/linux64/lib</span><br><span class="line"><span class="built_in">mv</span> vcs_save_restore_new.o vcs_save_restore_new.o.bak</span><br><span class="line">objcopy --redefine-sym pthread_yield=sched_yield ./vcs_save_restore_new.o.bak ./vcs_save_restore_new.o</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>配置快捷方式.md</title>
+    <url>/2024/09/28/%E9%85%8D%E7%BD%AE%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<p>这篇主要讲述怎么创建linux的快捷方式</p>
+<span id="more"></span>
+
+<ol>
+<li><p>查找源文件路径，找到bin目录（一定要选择带bin的目录)</p>
+</li>
+<li><p>找到一个合适的icon</p>
+</li>
+<li><p>在Desktop执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> app.desktop</span><br><span class="line"><span class="built_in">sudo</span> gedit app.desktop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进行如下配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Type=Application</span><br><span class="line">Exec=/usr/share/code/bin/code</span><br><span class="line">Name=vscode</span><br><span class="line">Icon=/usr/share/code/resources/app/extensions/microsoft-authentication/media/favicon.ico</span><br><span class="line">Terminal=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>Exec和Icon为可执行文件路径和桌面图标路径。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>误删除lib64文件后ubuntu开机卡在clean界面</title>
+    <url>/2024/11/07/%E8%AF%AF%E5%88%A0%E9%99%A4lib64%E6%96%87%E4%BB%B6%E5%90%8Eubuntu%E5%BC%80%E6%9C%BA%E5%8D%A1%E5%9C%A8clean%E7%95%8C%E9%9D%A2/</url>
+    <content><![CDATA[<p>失误删除lib64文件后ubuntu开机卡在clean界面后的解决办法<br>该方法也可用于ubuntu损坏的情况下紧急备份。</p>
+<span id="more"></span>
+
+<ol>
+<li>首先，准备跟自己ubuntu系统版本相同的系统盘</li>
+<li>然后，启动计算机，用系统盘打开</li>
+<li>使用try ubuntu</li>
+<li>用<code>sudo fdisk -l</code>查看自己ubuntu的磁盘分区</li>
+<li>用<code>sudo mount 磁盘分区 mnt/文件夹</code>挂载在目录中</li>
+<li>将需要的文件，如lib64复制到挂载点中(若无法打开某些挂载点的文件，可以使用chmod命令赋予权限)</li>
+<li>拔掉u盘，重启电脑。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+</search>
