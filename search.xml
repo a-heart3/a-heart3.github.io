@@ -3,8 +3,7 @@
   <entry>
     <title>hexo的使用</title>
     <url>/2024/09/28/hexo%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>hexo的简单使用方法</p>
-<span id="more"></span>
+    <content><![CDATA[<h2 id="hexo的简单使用方法"><a href="#hexo的简单使用方法" class="headerlink" title="hexo的简单使用方法"></a>hexo的简单使用方法</h2><span id="more"></span>
 
 <ul>
 <li><p>发表文章使用<code>hexo new title</code>命令，然后在hexo&#x2F;source&#x2F;_posts目录下更改</p>
@@ -33,10 +32,9 @@
 </ul>
 <ol start="2">
 <li>然后设置hexo目录下的_config.yml文件的<code>post_asset_folder: true</code></li>
-<li>此时，使用<code>hexo new title</code>命令创建新的博客时，会在同目录下生成一个同名文件夹，将需要用的图片放置到 该文件夹。<br>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</li>
+<li>此时，使用<code>hexo new title</code>命令创建新的博客时，会在同目录下生成一个同名文件夹，将需要用的图片放置到 该文件夹。</li>
 <li>最后在文件中引用图片<code>![label](图片的相对路径)</code>(建议使用markdown编辑器)</li>
 </ol>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>  4. 最后在文件中引用图片<code>![label](图片的相对路径)</code>(建议使用markdown编辑器)</p>
 <h2 id="hexo从git拉取遇到的问题"><a href="#hexo从git拉取遇到的问题" class="headerlink" title="hexo从git拉取遇到的问题"></a>hexo从git拉取遇到的问题</h2><p>想从一台电脑上换到另一台电脑维护blog，但是hexo出现了问题，主要是themes下的文件没有上传</p>
 <ol>
 <li><p>将themes&#x2F;主题下的.git文件删除</p>
@@ -54,21 +52,6 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf .deploy_git</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
 <p>即删掉.deploy_git重新生成</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>fbba91e23be55b8e0712f0ce2b6e5a1a437bc24c</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
 ]]></content>
       <categories>
         <category>工具的使用</category>
