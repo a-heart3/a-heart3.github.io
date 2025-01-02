@@ -61,6 +61,74 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu系统的美化.md</title>
+    <url>/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<p>刚刚下好的ubuntu界面可能不是那么美观，我们可以做一些改动使它好看一些。</p>
+<span id="more"></span>
+
+<ul>
+<li><p>首先下载相关的包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install gnome-tweak-tool</span><br><span class="line"><span class="built_in">sudo</span> apt install gnome-shell-extensions</span><br><span class="line"><span class="built_in">sudo</span> apt install chrmoe-gnome-shell</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开 <a href="https://extensions.gnome.org/">https://extensions.gnome.org/</a> 搜索 <code>User Themes</code>安装</p>
+<p>注：网页上方可能提醒你要先下载插件，按照步骤下载即可（若没有下载，则出现的是install按钮）</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/1.png" class="" title="label">
+
+<p>将按钮on打开即可自动下载</p>
+</li>
+<li><p>在 <a href="https://www.pling.com/">https://www.pling.com/</a> 找到喜欢的应用程序，光标，图标，shell主题，在命令行输入gnome-tweaks或搜索”优化”切换主题</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/2.png" class="" title="label">
+
+<p>推荐使用github clone下来后用.&#x2F;install的方式下载，具体下载方式和下载选项会在github的README.md文件中提到</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/3.png" class="" title="label">
+
+<p>若是下载后，没有出现自己下载的主题，可以注销用户后重新登陆即可。</p>
+<p>若要更换背景图片，需要把图片放在&#x2F;usr&#x2F;share&#x2F;backgrounds的目录下.</p>
+</li>
+<li><p>安装 【dash to dock】插件，与安装 【User Themes】方式相同。</p>
+</li>
+<li><p>在Extentions——-&gt;dash to dock 设置dock页面</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/4.png" class="" title="label">
+
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/5.png" class="" title="label">
+
+<p>dash to dock配置的是这个常用app栏。</p>
+<p>注：有时，安装完dock后会导致点开show applications时出现两个dock，这个原因是gnome-tweak安装的dock与ubuntu自带的dock冲突了，可以做如下操作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/gnome-shell/extension</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">mv</span> ubuntu-dock@ubunru.com ~</span><br></pre></td></tr></table></figure>
+
+<p>然后重启即可解决</p>
+</li>
+<li><p>同理， 下载【Arc Menu】， 并安装打开。</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/6.png" class="" title="label">
+
+<p>Arc Menu配置的是顶部菜单栏</p>
+</li>
+<li><p>最后，我的配置下，整个ubuntu的界面如下：</p>
+<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/7.png" class="" title="label"></li>
+</ul>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些想法</title>
+    <url>/2025/01/02/%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/</url>
+    <content><![CDATA[<p>记录下最近的想法。也是对我自身毛病的一些总结。</p>
+<span id="more"></span>
+
+<ol>
+<li>在如今快速发展以及老板不当人的时代，很有可能被很快的替代。我们需要在工作中找到自己无法被替代的点，发挥自己的优势。</li>
+<li>杜绝平均主义，门门80,对于自己的未来发展的作用远远不如一门90,其他70或者更低，与观点1相似，门门80代表门门都可以被轻松替代。</li>
+<li>想得太多，做得太少，到最后把有限的时间都用在了对未来和前途的焦虑上，自然结果不会太好。</li>
+<li>做任何事情都不可能事无巨细，观其大概，先掌握大概原理，再在实践中去精进细节。</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
     <title>ubuntu 22.04环境下 vivado 安装配置</title>
     <url>/2024/09/28/ubuntu-22-04%E7%8E%AF%E5%A2%83%E4%B8%8B-vivado-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>这篇文章主要讲述的是如何在ubuntu22.04的环境下对vivado进行安装配置</p>
@@ -136,60 +204,6 @@
 <p>设置完成后重启vscode语法纠错</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>环境搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu系统的美化.md</title>
-    <url>/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<p>刚刚下好的ubuntu界面可能不是那么美观，我们可以做一些改动使它好看一些。</p>
-<span id="more"></span>
-
-<ul>
-<li><p>首先下载相关的包</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt install gnome-tweak-tool</span><br><span class="line"><span class="built_in">sudo</span> apt install gnome-shell-extensions</span><br><span class="line"><span class="built_in">sudo</span> apt install chrmoe-gnome-shell</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>打开 <a href="https://extensions.gnome.org/">https://extensions.gnome.org/</a> 搜索 <code>User Themes</code>安装</p>
-<p>注：网页上方可能提醒你要先下载插件，按照步骤下载即可（若没有下载，则出现的是install按钮）</p>
-<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/1.png" class="" title="label">
-
-<p>将按钮on打开即可自动下载</p>
-</li>
-<li><p>在 <a href="https://www.pling.com/">https://www.pling.com/</a> 找到喜欢的应用程序，光标，图标，shell主题，在命令行输入gnome-tweaks或搜索”优化”切换主题</p>
-<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/2.png" class="" title="label">
-
-<p>推荐使用github clone下来后用.&#x2F;install的方式下载，具体下载方式和下载选项会在github的README.md文件中提到</p>
-<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/3.png" class="" title="label">
-
-<p>若是下载后，没有出现自己下载的主题，可以注销用户后重新登陆即可。</p>
-<p>若要更换背景图片，需要把图片放在&#x2F;usr&#x2F;share&#x2F;backgrounds的目录下.</p>
-</li>
-<li><p>安装 【dash to dock】插件，与安装 【User Themes】方式相同。</p>
-</li>
-<li><p>在Extentions——-&gt;dash to dock 设置dock页面</p>
-<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/4.png" class="" title="label">
-
-<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/5.png" class="" title="label">
-
-<p>dash to dock配置的是这个常用app栏。</p>
-<p>注：有时，安装完dock后会导致点开show applications时出现两个dock，这个原因是gnome-tweak安装的dock与ubuntu自带的dock冲突了，可以做如下操作</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/gnome-shell/extension</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">mv</span> ubuntu-dock@ubunru.com ~</span><br></pre></td></tr></table></figure>
-
-<p>然后重启即可解决</p>
-</li>
-<li><p>同理， 下载【Arc Menu】， 并安装打开。</p>
-<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/6.png" class="" title="label">
-
-<p>Arc Menu配置的是顶部菜单栏</p>
-</li>
-<li><p>最后，我的配置下，整个ubuntu的界面如下：</p>
-<img src="/2024/09/25/ubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%BE%8E%E5%8C%96/7.png" class="" title="label"></li>
-</ul>
 ]]></content>
       <categories>
         <category>环境搭建</category>
@@ -556,6 +570,51 @@
       </categories>
       <tags>
         <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的2024总结以及2025展望</title>
+    <url>/2025/01/02/%E6%88%91%E7%9A%842024%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A2025%E5%B1%95%E6%9C%9B/</url>
+    <content><![CDATA[<p>补档了算是</p>
+<span id="more"></span>
+
+<p>其实今年的最主要的收获就是顺利考上了研究生，然后，在研一的上半学期有了许多新的认识，希望这些新的认识能够指引我好好度过2025.</p>
+<p>先说新的认识吧。</p>
+<ol>
+<li>在来这边上学后，我了解到了一些大牛老师的背景，更加深刻的明白了，个人的优秀程度在很大程度上与家庭背景有关。具体的我就不在这里表述了，我估计我这辈子也忘不掉。所以，不与他人比较，努力过好自己的生活，自己的生活一天好过一天才是王道。</li>
+<li>很多人对优秀等词语的定义自有一套自己的标杆，我们不要拿别人定义的标杆来衡量自己。这样只会徒添焦虑。更不要被网上的一些所谓“小镇做题家”“谁谁谁做了什么，好优秀”这种舆论所引导。原因与第一条观点相似，至少在我的了解中，很多家庭并不能支付得起高昂的课外兴趣班的费用，能够让自己的孩子上学已经倾尽了家里全部的能力。“小镇做题家”可以是自嘲，但不能用来嘲笑别人。同时，这也是我坚定的认为高考这种应试教育存在的必要性和合理性，纵使它却有缺点，但它还是给了选择不多的人一条看得见希望的路。不然大家堆财力，也能营造出来如姜萍这样的天才少女，而埋没了那些真正的天才。</li>
+<li>我发现自己并没有比别人差很多，也不比别人优秀。我就是一个普通的人，没有必要心高气傲的觉得什么事情非我不可，也没有必要觉得别人可以的事情我不可以。别人很强，我可以向他们讨教学习，而我也有我自己的优点。同时，我也更感恩我遇到的一切，也更加热爱我现在的生活。</li>
+<li>放弃优绩主义，放弃平均思想。这是以前高考的主要思想，同时也体现在了我这次的考研成绩上。事实上，在进入大学之后，就应该明白一个道理，样样通&#x3D;样样松。每门课的80分，不如一门课100分+其他课的70分，因为有一个方向保证了你在这个大浪淘沙的时代绝对不可能被替代。同时，也没人在乎你的成绩，只要不影响你毕业，未来你发展的是什么样子，才最重要。</li>
+<li>引用士兵突击里的一句话“做有意义的事就是好好活，好好活就是做有意义的事”，我所做的事情的意义是我自己所赋予的，如果我认为做一件事对自己有意义，那就去做，不必考虑别人对这件事的看法。</li>
+<li>再引用士兵突击里的一句话“想要和得到，中间有一步是要做到”，在还没做之前，就不断的考虑自己能否得到，最终只会给自己平添焦虑，一事无成。我们要有一个明确的目标，和一颗坚定的心。牢牢把握住自己能把握住的因素。（这也是我在考研的感悟）。</li>
+<li>真正的应该是干一行爱一行，而不是爱一行干一行。你不干这一行，又怎么知道这一行的魅力所在。</li>
+<li>学习上的一些想法:<ol>
+<li>学习任务不能同时布置的很多（一般1-2个为佳），否则会手足无措。</li>
+<li>学习任务的时间跨度不能很长（否则会消磨掉热情）</li>
+<li>一定以目的导向学习，才会有学习的动力。</li>
+<li>关注大致概念，在实践中再去关注细节。</li>
+<li>输入，实践，输出。</li>
+<li>好书多看，不贪多。</li>
+</ol>
+</li>
+</ol>
+<p>再说不足</p>
+<ol>
+<li>浪费了很多时间在我认为无意义的事情上。</li>
+<li>很久很久没看文学方面的书了。</li>
+<li>流水有点大。</li>
+</ol>
+<p>最后是展望</p>
+<ol>
+<li>希望自己能在深度学习编译器和npu方向有所进展。</li>
+<li>希望自己能读自己想读的文学书籍和影视作品。</li>
+<li>希望能学习吉他和摄影，转转杭州的风景。</li>
+<li>希望能找到实习。</li>
+<li>希望能保持好身体，多练球和健身。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>想法</tag>
       </tags>
   </entry>
   <entry>
